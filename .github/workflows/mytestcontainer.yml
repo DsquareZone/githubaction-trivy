@@ -1,1 +1,14 @@
+on:
+ - push
+ - workflow_dispatch
 
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.2
+    - name: Build Container Image
+      shell: pwsh
+      run: docker build --tag mytestcontainer $PSScriptRoot 
+ 
